@@ -1,4 +1,4 @@
-package com.xsota.poop.statusbarinpoop;
+package com.xsota.poop.poopinstatusbar;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

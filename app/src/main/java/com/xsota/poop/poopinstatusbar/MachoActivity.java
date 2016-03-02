@@ -1,4 +1,4 @@
-package com.xsota.poop.statusbarinpoop;
+package com.xsota.poop.poopinstatusbar;
 
 import android.app.Notification;
 import android.app.NotificationManager;

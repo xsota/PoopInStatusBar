@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.xsota.poop.statusbarinpoop"
+        applicationId "com.xsota.poop.poopinstatusbar"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
