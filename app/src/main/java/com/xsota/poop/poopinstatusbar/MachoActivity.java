@@ -32,7 +32,7 @@ public class MachoActivity extends AppCompatActivity {
         .setContentText("(うんちの音)")
         //.setAutoCancel(true)
         .setSmallIcon(R.drawable.poopicon)
-        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.poop))
+        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.poopiconlarge))
         .build();
 
     NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
