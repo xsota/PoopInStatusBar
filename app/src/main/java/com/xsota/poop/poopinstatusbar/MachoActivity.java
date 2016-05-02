@@ -45,6 +45,7 @@ public class MachoActivity extends AppCompatActivity {
 
     ButterKnife.bind(this);
 
+    // ログインしてたらログインボタン非表示にする
     if (Twitter.getSessionManager().getActiveSession() == null) {
       loginButton.setCallback(new Callback<TwitterSession>() {
         @Override
