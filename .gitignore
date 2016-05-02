@@ -1,5 +1,6 @@
 # fabric keys
 fabric_keys.xml
+gradle.properties
 
 ## https://github.com/github/gitignore/blob/master/Android.gitignore
 
