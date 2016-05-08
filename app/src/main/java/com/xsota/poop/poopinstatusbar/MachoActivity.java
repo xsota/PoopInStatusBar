@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.twitter.sdk.android.Twitter;
@@ -31,6 +32,8 @@ import io.fabric.sdk.android.Fabric;
 
 public class MachoActivity extends AppCompatActivity {
   @Bind(R.id.twitter_login_button) public TwitterLoginButton loginButton;
+  @Bind(R.id.twitter_logout_button) public Button logoutButton;
+
 
   int poopCount = 0;
 
@@ -47,6 +50,7 @@ public class MachoActivity extends AppCompatActivity {
 
     // ログインしてたらログインボタン非表示にする
     if (Twitter.getSessionManager().getActiveSession() == null) {
+      logoutButton.setVisibility(View.GONE);
       loginButton.setCallback(new Callback<TwitterSession>() {
         @Override
         public void success(Result<TwitterSession> result) {
@@ -116,6 +120,35 @@ public class MachoActivity extends AppCompatActivity {
 
       }
     });
+  }
+
+  private void setUpLoginButton(){
+    loginButton.setCallback(new Callback<TwitterSession>() {
+      @Override
+      public void success(Result<TwitterSession> result) {
+        TwitterSession session = result.data;
+        String userName = "@" + session.getUserName();
+        Toast.makeText(getApplicationContext(), userName+"さん、こんにちは。", Toast.LENGTH_LONG).show();
+        loginButton.setVisibility(View.GONE);
+        logoutButton.setVisibility(View.VISIBLE);
+        isTwitterLogin = true;
+      }
+
+      @Override
+      public void failure(TwitterException exception) {
+        Toast.makeText(getApplicationContext(), "Twitterログイン失敗", Toast.LENGTH_LONG).show();
+      }
+    });
+  }
+
+  @OnClick(R.id.twitter_logout_button)
+  public void logoutTwitter(){
+    Twitter.getSessionManager().clearActiveSession();
+    Twitter.logOut();
+    isTwitterLogin=false;
+    logoutButton.setVisibility(View.GONE);
+    loginButton.setVisibility(View.VISIBLE);
+    setUpLoginButton();
   }
 
 }
